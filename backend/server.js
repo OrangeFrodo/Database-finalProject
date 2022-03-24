@@ -1,7 +1,12 @@
 const express = require("express")
 
+const colors = require("colors")
+const connectDB = require("../backend/config/db")
+
 // Dotenv file with variables init
 const dotenv = require("dotenv").config()
+
+connectDB(process.env.MONGO_URI)
 
 // Error handler
 const { errorHandler } = require("./midlleware/errorMiddleware")
@@ -18,7 +23,7 @@ app.use(express.urlencoded({
 }))
 
 // Use routes
-app.use("/api/goals", require("./routes/goalRoutes"))
+app.use("/api/articles", require("./routes/articleRoute"))
 
 // Error handler
 app.use(errorHandler)
