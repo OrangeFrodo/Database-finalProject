@@ -24,6 +24,7 @@ app.use(express.urlencoded({
 
 // Use routes
 app.use("/api/articles", require("./routes/articleRoute"))
+app.use("/api/users", require("./routes/userRoutes"))
 
 // Error handler
 app.use(errorHandler)

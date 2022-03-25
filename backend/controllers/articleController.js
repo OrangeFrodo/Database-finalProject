@@ -12,9 +12,9 @@ const getArticles = asyncHandler(async (req, res) => {
 // Route = "/"
 // Method = POST
 const postArticles = asyncHandler(async (req, res) => {
-    if(!req.body.text) {
+    if(!req.body.text || !req.body.header) {
         res.status(400)
-        throw new Error("Missing text field")
+        throw new Error("Missing text or header field")
     }
     const article = await Article.create({
         header: req.body.header,
