@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express")
 const connectDB = require("../backend/config/db")
 
@@ -23,6 +24,21 @@ app.use(express.urlencoded({
 // Use routes
 app.use("/api/articles", require("./routes/articleRoute"))
 app.use("/api/users", require("./routes/userRoutes"))
+
+// Serve frontend
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../frontend/build")))
+    app.get("*", (req, res) => res.sendFile(
+        path.resolve(
+            __dirname,
+            "../",
+            "frontend",
+            "build",
+            "index.html")
+    ))
+} else {
+    app.get("/", (req, res) => res.send("Not in production mode"))
+}
 
 // Error handler
 app.use(errorHandler)
