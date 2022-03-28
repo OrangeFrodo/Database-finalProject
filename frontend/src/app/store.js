@@ -6,6 +6,6 @@ import goalReducer from '../features/articles/articleSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    goals: goalReducer,
+    articles: goalReducer,
   },
 });

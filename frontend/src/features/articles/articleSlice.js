@@ -45,12 +45,29 @@ export const getArticles = createAsyncThunk('goals/getAll',
     }
 )
 
+// Get user goals
+export const getArticlesAll = createAsyncThunk('goals/getAllWithoutFilter', 
+    async (_, thunkAPI) => { 
+        try {
+            return await goalService.getArticlesAll()
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
 // Delete user goal
-export const deleteGoal = createAsyncThunk('goals/delete', 
+export const deleteItem = createAsyncThunk('goals/delete', 
     async (id, thunkAPI) => { 
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await goalService.deleteGoal(id, token)
+            return await goalService.deleteItem(id, token)
         } catch (error) {
             const message =
                 (error.response &&
@@ -97,15 +114,28 @@ export const goalSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(deleteGoal.pending, (state) => {
+            .addCase(deleteItem.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(deleteGoal.fulfilled, (state, action) => {
+            .addCase(deleteItem.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals = state.goals.filter((goal) => goal._id !== action.payload.id)
             })
-            .addCase(deleteGoal.rejected, (state, action) => {
+            .addCase(deleteItem.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(getArticlesAll.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getArticlesAll.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.goals = action.payload
+            })
+            .addCase(getArticlesAll.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

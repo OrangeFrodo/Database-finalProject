@@ -24,8 +24,15 @@ export const getArticles = async (token) => {
     return response.data
 }
 
+
+// Get goals
+export const getArticlesAll = async () => {
+    const response = await axios.get(API_URL)
+    return response.data
+}
+
 // Delete user article
-export const deleteGoal = async (id, token) => {
+export const deleteItem = async (id, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -38,7 +45,8 @@ export const deleteGoal = async (id, token) => {
 const goalService = {
     createArticle,
     getArticles,
-    deleteGoal,
+    deleteItem,
+    getArticlesAll
 }
 
 export default goalService

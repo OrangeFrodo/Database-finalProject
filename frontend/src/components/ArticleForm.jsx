@@ -39,7 +39,7 @@ function ArticleForm() {
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
-            Add goal
+            Add article
           </button>
         </div>
       </form>

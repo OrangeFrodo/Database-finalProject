@@ -11,9 +11,9 @@ function Header() {
   const { user } = useSelector((state) => state.auth);
 
   const onLogout = () => {
-    dispatch(logout())
-    dispatch(reset())
-    navigate('/')
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/articles");
   };
 
   return (
@@ -30,6 +30,11 @@ function Header() {
           </li>
         ) : (
           <>
+            <li>
+              <Link to="/articles">
+                Articles
+              </Link>
+            </li>
             <li>
               <Link to="/login">
                 <FaSignInAlt /> Login
