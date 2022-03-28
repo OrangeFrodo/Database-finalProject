@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import goalService from './goalService';
+import goalService from './articleService';
 
 const initialState = {
     goals: [],
@@ -10,11 +10,11 @@ const initialState = {
 }
 
 // Create new goal
-export const createGoal = createAsyncThunk('goals/create',
+export const createArticle = createAsyncThunk('goals/create',
     async (goalData, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await goalService.createGoal(goalData, token)
+            return await goalService.createArticle(goalData, token)
         } catch (error) {
             const message =
                 (error.response &&
@@ -28,11 +28,11 @@ export const createGoal = createAsyncThunk('goals/create',
 );
 
 // Get user goals
-export const getGoals = createAsyncThunk('goals/getAll', 
+export const getArticles = createAsyncThunk('goals/getAll', 
     async (_, thunkAPI) => { 
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await goalService.getGoals(token)
+            return await goalService.getArticles(token)
         } catch (error) {
             const message =
                 (error.response &&
@@ -71,28 +71,28 @@ export const goalSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(createGoal.pending, (state) => {
+            .addCase(createArticle.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createGoal.fulfilled, (state, action) => {
+            .addCase(createArticle.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals.push(action.payload)
             })
-            .addCase(createGoal.rejected, (state, action) => {
+            .addCase(createArticle.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(getGoals.pending, (state) => {
+            .addCase(getArticles.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(getGoals.fulfilled, (state, action) => {
+            .addCase(getArticles.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals = action.payload
             })
-            .addCase(getGoals.rejected, (state, action) => {
+            .addCase(getArticles.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

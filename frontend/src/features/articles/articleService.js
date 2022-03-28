@@ -3,7 +3,7 @@ import axios from "axios"
 const API_URL = "/api/articles/"
 
 // Create a new goal
-export const createGoal = async (goalData, token) => {
+export const createArticle = async (goalData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -14,7 +14,7 @@ export const createGoal = async (goalData, token) => {
 }
 
 // Get goals
-export const getGoals = async (token) => {
+export const getArticles = async (token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -36,8 +36,8 @@ export const deleteGoal = async (id, token) => {
 }
 
 const goalService = {
-    createGoal,
-    getGoals,
+    createArticle,
+    getArticles,
     deleteGoal,
 }
 

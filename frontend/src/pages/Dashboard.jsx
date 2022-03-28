@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ArticleForm from "../components/ArticleForm";
 import Spinner from "../components/Spinner"
-import { getGoals, reset } from "../features/articles/goalSlice";
+import { getArticles, reset } from "../features/articles/articleSlice";
 import ArticleItem from "../components/ArticleItem";
 
 function Dashboard() {
@@ -23,10 +23,10 @@ function Dashboard() {
       navigate("/login");
     }
 
-    dispatch(getGoals)
+    dispatch(getArticles())
 
     return () => {
-      dispatch(reset)
+      dispatch(reset())
     }
 
   }, [user, navigate, isError, message, dispatch]);

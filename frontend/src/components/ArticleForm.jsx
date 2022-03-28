@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createGoal } from "../features/articles/goalSlice";
+import { createArticle } from "../features/articles/articleSlice";
 
 function ArticleForm() {
   const [text, setText] = useState("");
@@ -11,7 +11,7 @@ function ArticleForm() {
   const onSubmit = (values) => {
     values.preventDefault();
 
-    dispatch(createGoal({ header, text }));
+    dispatch(createArticle({ header, text }));
     setText("");
     setHeader("");
   };
@@ -22,19 +22,19 @@ function ArticleForm() {
         <div className="form-group">
           <label htmlFor="text">Header</label>
           <input
-            type="text"
-            id="text"
-            name="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <label htmlFor="text">Article</label>
-          <input
             type="header"
             id="header"
             name="header"
             value={header}
             onChange={(e) => setHeader(e.target.value)}
+          />
+          <label htmlFor="text">Text</label>
+          <input
+            type="text"
+            id="text"
+            name="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
         <div className="form-group">
