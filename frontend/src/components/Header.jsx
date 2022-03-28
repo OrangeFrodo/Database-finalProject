@@ -19,30 +19,33 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">ArticleSetter</Link>
+        <Link to="/">Príbehy Sveta</Link>
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Loggout
-            </button>
-          </li>
+          <div>
+            <li>
+              <Link to="/">Príbehy</Link>
+            </li>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Odhlásenie
+              </button>
+            </li>
+          </div>
         ) : (
           <>
             <li>
-              <Link to="/articles">
-                Articles
-              </Link>
+              <Link to="/articles">Príbehy</Link>
             </li>
             <li>
               <Link to="/login">
-                <FaSignInAlt /> Login
+                <FaSignInAlt /> Prihlásenie
               </Link>
             </li>
             <li>
               <Link to="/register">
-                <FaUser /> Register
+                <FaUser /> Registrácia
               </Link>
             </li>
           </>

@@ -1,6 +1,4 @@
 const express = require("express")
-
-const colors = require("colors")
 const connectDB = require("../backend/config/db")
 
 // Dotenv file with variables init

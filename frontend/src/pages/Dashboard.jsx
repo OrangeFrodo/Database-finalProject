@@ -37,7 +37,7 @@ function Dashboard() {
 
   return <>
     <section className="heading">
-      <h1>Welcome {user && user.name}</h1>
+      <h1>Vitaj {user && user.name}</h1>
     </section>
     <ArticleForm />
 
@@ -48,7 +48,7 @@ function Dashboard() {
             <ArticleItem key={goal._id} goal={goal}/>
           ))}
         </div>
-      ): (<h3>No articles yet</h3>)}
+      ): (<h3>Zatial neboli vytvorené príbehy</h3>)}
     </section>
 
   </>;

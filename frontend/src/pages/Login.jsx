@@ -58,9 +58,9 @@ function Login() {
     <>
       <section className="heading">
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt /> Prihlásenie
         </h1>
-        <p>Please login</p>
+        <p>Prosím prihlás sa</p>
       </section>
       <section className="form">
         <form onSubmit={onSubmit}>
@@ -71,7 +71,7 @@ function Login() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="Vlož email"
               onChange={onChange}
             />
           </div>
@@ -82,7 +82,7 @@ function Login() {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="Vlož heslo"
               onChange={onChange}
             />
           </div>

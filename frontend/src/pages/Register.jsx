@@ -67,9 +67,9 @@ function Register() {
     <>
       <section className="heading">
         <h1>
-          <FaUser /> Register
+          <FaUser /> Registrácia
         </h1>
-        <p>Please create an account</p>
+        <p>Prosím vytvor si účet</p>
       </section>
 
       <section className="form">
@@ -81,7 +81,7 @@ function Register() {
               id="name"
               name="name"
               value={name}
-              placeholder="Enter your name"
+              placeholder="Vlož meno"
               onChange={onChange}
             />
           </div>
@@ -92,7 +92,7 @@ function Register() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="Vlož email"
               onChange={onChange}
             />
           </div>
@@ -103,7 +103,7 @@ function Register() {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter password"
+              placeholder="Vlož heslo"
               onChange={onChange}
             />
           </div>
@@ -114,7 +114,7 @@ function Register() {
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Confirm password"
+              placeholder="Potvrď heslo"
               onChange={onChange}
             />
           </div>

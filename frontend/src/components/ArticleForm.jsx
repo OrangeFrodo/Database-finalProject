@@ -20,7 +20,7 @@ function ArticleForm() {
     <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="text">Header</label>
+          <label htmlFor="text">Nadpis</label>
           <input
             type="header"
             id="header"
@@ -29,17 +29,18 @@ function ArticleForm() {
             onChange={(e) => setHeader(e.target.value)}
           />
           <label htmlFor="text">Text</label>
-          <input
+          <textarea
             type="text"
             id="text"
             name="text"
             value={text}
+            cols="40" rows="25"
             onChange={(e) => setText(e.target.value)}
           />
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
-            Add article
+            Pridať príbeh
           </button>
         </div>
       </form>
